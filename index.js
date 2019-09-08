@@ -12,12 +12,13 @@ client.on('guildMemberAdd', member =>                                           
 	const channel = member.guild.channels.find(ch => ch.name === 'member-log'); // find the member log channel
 
 	if (!channel) return;                                                       // do nothing if not found
-	const name = message.guild.name;
+	
+	const serverName = message.guild.name;
 	const welcome = message.guild.channels.find(ch => ch.name === 'welcome');
     const intro  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
     const roles = message.guild.channels.find(ch => ch.name === 'roles');
 
-        message.channel.send(`Welcome to ${name}, ${member} !`);
+        message.channel.send(`Welcome to ${serverName}, ${member} !`);
 	
 	if(!welcome || !intro) return;                                               // do nothing if they arent found
 
@@ -46,12 +47,13 @@ client.on('message', message =>                                                 
 	else if(message.content.startsWith(`${prefix}welcome`))                // test welcome message
 	{
 		let user = message.mentions.members.first();
-
+		
+		const serverName = message.guild.name;
 		const welcome = message.guild.channels.find(ch => ch.name === 'welcome');
 		const intro  = message.guild.channels.find(ch => ch.name === 'introduction');
 		const roles = message.guild.channels.find(ch => ch.name === 'roles');
 
-		message.channel.send(`Welcome to PrimoTech, ${user} !`);
+		message.channel.send(`Welcome to ${serverName}, ${user} !`);
         	message.channel.send(`Please read ${welcome} and leave an intro in ${intro} !`);
         	message.channel.send(`Get your Role from ${roles} !`);
 	}
