@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const prefix = "-"; //require('./config.json');
+const prefix = "-";
 const client = new Discord.Client();
 
 client.once('ready', () =>
@@ -7,34 +7,34 @@ client.once('ready', () =>
 	console.log('Ready!')
 });
 
-client.on('guildMemberAdd', member =>
+client.on('guildMemberAdd', member =>                                           // On addition of a new memeber....
 {
-	const channel = member.guild.channels.find(ch => ch.name === 'member-log');
+	const channel = member.guild.channels.find(ch => ch.name === 'member-log'); // find the member log channel
 
-	if (!channel) return;
-	
+	if (!channel) return;                                                       // do nothing if not found
+	const name = message.guild.name;
 	const welcome = message.guild.channels.find(ch => ch.name === 'welcome');
-        const intro  = message.guild.channels.find(ch => ch.name === 'introduction');
-        const roles = message.guild.channels.find(ch => ch.name === 'roles');
+    const intro  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
+    const roles = message.guild.channels.find(ch => ch.name === 'roles');
 
-        message.channel.send(`Welcome to PrimoTech, ${member} !`);
+        message.channel.send(`Welcome to ${name}, ${member} !`);
 	
-	if(!welcome || !intro) return;
+	if(!welcome || !intro) return;                                               // do nothing if they arent found
 
         message.channel.send(`Please read ${welcome} and leave an intro in ${intro} !`);
 	
 	if(!roles) return;
 
-        message.channel.send(`Get your Role from ${roles} !`);
+        message.channel.send(`Get your Role from ${roles} !`);                  // return welcome messgae to member log channel
 });
 
-client.on('message', message =>
+client.on('message', message =>                                                 // on messgae recieved......
 {
 	//console.log(message.guild.memberCount);
 
 	if(message.content.startsWith(`${prefix}hello`))
 	{
-		message.channel.send("Greetings Ningen!");
+		message.channel.send("Greetings Ningen!");                          
 	}
 
 	else if(message.content.startsWith(`${prefix}troll`))
@@ -43,7 +43,7 @@ client.on('message', message =>
 		message.channel.send(`Silly Ningen! ${user}`);
 	}
 	
-	else if(message.content.startsWith(`${prefix}welcome`))
+	else if(message.content.startsWith(`${prefix}welcome`))                // test welcome message
 	{
 		let user = message.mentions.members.first();
 
@@ -57,5 +57,5 @@ client.on('message', message =>
 	}
 });
 
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN);                                      //  invoke bot token from Heroku variables
 
