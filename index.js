@@ -36,10 +36,7 @@ client.on('message', message =>                                                 
 	//console.log(message.guild.memberCount);
 	if(message.content.startsWith(`${prefix}cmd`))
 	{
-		message.channel.send(" ''' -cmd ''' ");
-		message.channel.send(" ''' -hello ''' ");
-		message.channel.send(" ''' -troll ''' ");
-		message.channel.send(" ''' -welcome ''' ");
+		message.channel.send(" ``` -cmd \n -hello \n -troll \n -welcome ``` ");
 	}
 	else if(message.content.startsWith(`${prefix}hello`))
 	{
