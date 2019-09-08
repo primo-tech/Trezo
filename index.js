@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
-const prefix = "-";
 const client = new Discord.Client();
+
+const prefix = "-";
+
 
 client.once('ready', () =>
 {
@@ -32,8 +34,14 @@ client.on('guildMemberAdd', member =>                                           
 client.on('message', message =>                                                 // on messgae recieved......
 {
 	//console.log(message.guild.memberCount);
-
-	if(message.content.startsWith(`${prefix}hello`))
+	if(message.content.startsWith(`${prefix}cmd`))
+	{
+		message.channel.send(" ''' -cmd ''' ");
+		message.channel.send(" ''' -hello ''' ");
+		message.channel.send(" ''' -troll ''' ");
+		message.channel.send(" ''' -welcome ''' ");
+	}
+	else if(message.content.startsWith(`${prefix}hello`))
 	{
 		message.channel.send("Greetings Ningen!");                          
 	}
