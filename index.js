@@ -11,24 +11,24 @@ client.once('ready', () =>
 
 client.on('guildMemberAdd', member =>                                           // On addition of a new memeber....
 {
-	const channel = member.guild.channels.find(ch => ch.name === 'general'); // find the member log channel
+	const sysChannel = member.guild.channels.find(ch => ch.name === 'general'); // find the member log channel
 
-	if (!channel) return;                                                       // do nothing if not found
+	if (!sysChannel) return;                                                       // do nothing if not found
 	
 	const serverName = message.guild.name;
 	const welcome = message.guild.channels.find(ch => ch.name === 'welcome');
     const intro  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
     const roles = message.guild.channels.find(ch => ch.name === 'roles');
 
-    message.channel.send(`Welcome to ${serverName}, ${member} !`);
+    sysChannel.send(`Welcome to ${serverName} ${member.user.username} !`);
 	
 	if(!welcome || !intro) return;                                               // do nothing if they arent found
 
-    message.channel.send(`Please read ${welcome} and leave an intro in ${intro} !`);
+    sysChannel.send(`Please read ${welcome} and leave an intro in ${intro} !`);
 	
 	if(!roles) return;
 
-    message.channel.send(`Get your Role from ${roles} !`);                  // return welcome messgae to member log channel
+    sysChannel.send(`Get your Role from ${roles} !`);                  // return welcome messgae to member log channel
 });
 
 client.on('message', message =>                                                 // on messgae recieved......
@@ -52,25 +52,31 @@ client.on('message', message =>                                                 
 	else if(message.content.startsWith(`${prefix}welcome`))                // test welcome message
 	{
 		let user = message.mentions.members.first();
+		const noUser = " ";
 		
-const sysChannel = message.guild.channels.find(ch => ch.name === 'general'); // find the member log channel
+		if (!user)
+		{
+			user = noUser;
+		}
+		
+		const sysChannel = message.guild.channels.find(ch => ch.name === 'general'); // find the member log channel
 
-	if (!sysChannel) return;                                                       // do nothing if not found
+		if (!sysChannel) return;                                                       // do nothing if not found
 	
-	const serverName = message.guild.name;
-	const welcome = message.guild.channels.find(ch => ch.name === 'welcome');
-    const intro  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
-    const roles = message.guild.channels.find(ch => ch.name === 'roles');
+		const serverName = message.guild.name;
+		const welcome = message.guild.channels.find(ch => ch.name === 'welcome');
+		const intro  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
+		const roles = message.guild.channels.find(ch => ch.name === 'roles');
 
-   sysChannel.send(`Welcome to ${serverName}, ${user} !`);
+		sysChannel.send(`Welcome to ${serverName} ${user} !`);
+		
+		if(!welcome || !intro) return;                                               // do nothing if they arent found
+
+		sysChannel.send(`Please read ${welcome} and leave an intro in ${intro} !`);
 	
-	if(!welcome || !intro) return;                                               // do nothing if they arent found
+		if(!roles) return;
 
-    sysChannel.send(`Please read ${welcome} and leave an intro in ${intro} !`);
-	
-	if(!roles) return;
-
-    sysChannel.send(`Get your Role from ${roles} !`);                  // return welcome messgae to member log channel
+		sysChannel.send(`Get your Role from ${roles} !`);                  // return welcome messgae to member log channel
 	}
 });
 
