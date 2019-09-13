@@ -11,7 +11,7 @@ client.once('ready', () =>
 
 client.on('guildMemberAdd', member =>                                           // On addition of a new memeber....
 {
-	const channel = member.guild.channels.find(ch => ch.name === 'member-log'); // find the member log channel
+	const channel = member.guild.channels.find(ch => ch.name === 'general'); // find the member log channel
 
 	if (!channel) return;                                                       // do nothing if not found
 	
@@ -53,20 +53,24 @@ client.on('message', message =>                                                 
 	{
 		let user = message.mentions.members.first();
 		
-		const serverName = message.guild.name;
-		const welcome = message.guild.channels.find(ch => ch.name === 'welcome');
-		const intro  = message.guild.channels.find(ch => ch.name === 'introduction');
-		const roles = message.guild.channels.find(ch => ch.name === 'roles');
+const channel = member.guild.channels.find(ch => ch.name === 'general'); // find the member log channel
 
-		message.channel.send(`Welcome to ${serverName}, ${user} !`);
-		message.channel.send(`Please read ${welcome} and leave an intro in ${intro} !`);
-        message.channel.send(`Get your Role from ${roles} !`);
-	}
-	else if (message.content.startsWith(`${prefix}check`))
-	{
-		message.channel.send(`Yo!`);
-		const sysChannel = message.guild.channels.find(ch => ch.name === systemChannel.name); // find the member log channel
-		message.channel.send(`This is ${serverName}'s ${sysChannel} channel !`);
+	if (!channel) return;                                                       // do nothing if not found
+	
+	const serverName = message.guild.name;
+	const welcome = message.guild.channels.find(ch => ch.name === 'welcome');
+    const intro  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
+    const roles = message.guild.channels.find(ch => ch.name === 'roles');
+
+    message.channel.send(`Welcome to ${serverName}, ${member} !`);
+	
+	if(!welcome || !intro) return;                                               // do nothing if they arent found
+
+    message.channel.send(`Please read ${welcome} and leave an intro in ${intro} !`);
+	
+	if(!roles) return;
+
+    message.channel.send(`Get your Role from ${roles} !`);                  // return welcome messgae to member log channel
 	}
 });
 
