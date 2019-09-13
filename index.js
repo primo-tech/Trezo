@@ -65,8 +65,8 @@ client.on('message', message =>                                                 
 	else if (message.content.startsWith(`${prefix}check`))
 	{
 		message.channel.send(`Yo!`);
-		const sysChannel = guild.sysChannel; // find the member log channel
-		message.channel.send(`This is ${serverName}'s ${channel} channel !`);
+		const sysChannel = message.guild.SystemChannel; // find the member log channel
+		message.channel.send(`This is ${serverName}'s ${sysChannel} channel !`);
 	}
 });
 
