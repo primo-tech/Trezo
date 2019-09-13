@@ -62,6 +62,11 @@ client.on('message', message =>                                                 
 		message.channel.send(`Please read ${welcome} and leave an intro in ${intro} !`);
         message.channel.send(`Get your Role from ${roles} !`);
 	}
+	else if (message.content.startsWith(`${prefix}check`))
+	{
+		const channel = member.guild.channels.find(ch => ch.name === 'member-log'); // find the member log channel
+		message.channel.send(`This is ${serverName}'s ${channel} channel !`);
+	}
 });
 
 client.login(process.env.BOT_TOKEN);                                      //  invoke bot token from Heroku variables
