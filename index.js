@@ -76,23 +76,23 @@ client.on('message', message =>                                                 
 		else
 		{
 			sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
+			const exampleEmbed = new Discord.RichEmbed()
+				.setColor('#0099ff')
+				.setTitle('Some title')
+				.setURL('https://discord.js.org/')
+				.setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
+				.setDescription('Some description here')
+				.setThumbnail('https://i.imgur.com/wSTFkRM.png')
+				.addField('Regular field title', 'Some value here')
+				.addBlankField()
+				.addField('Inline field title', 'Some value here', true)
+				.addField('Inline field title', 'Some value here', true)
+				.addField('Inline field title', 'Some value here', true)
+				.setImage('https://i.imgur.com/wSTFkRM.png')
+				.setTimestamp()
+				.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
+			sysChannel.send(exampleEmbed);
 		}
-		const exampleEmbed = new Discord.RichEmbed()
-		.setColor('#0099ff')
-		.setTitle('Some title')
-		.setURL('https://discord.js.org/')
-		.setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
-		.setDescription('Some description here')
-		.setThumbnail('https://i.imgur.com/wSTFkRM.png')
-		.addField('Regular field title', 'Some value here')
-		.addBlankField()
-		.addField('Inline field title', 'Some value here', true)
-		.addField('Inline field title', 'Some value here', true)
-		.addField('Inline field title', 'Some value here', true)
-		.setImage('https://i.imgur.com/wSTFkRM.png')
-		.setTimestamp()
-		.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
-		sysChannel.send(exampleEmbed);
 	}
 	else if(message.content.startsWith(`${prefix}addrole`))
 	{
