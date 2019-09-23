@@ -68,7 +68,7 @@ client.on('message', message =>                                                 
 		}
 		else
 		{
-			message.channel.send(```Found ${sysChannel} ```);
+			message.channel.send(`Found ${sysChannel}`);
 		}
 	
 		const serverName = message.guild.name;
