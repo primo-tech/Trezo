@@ -46,9 +46,9 @@ client.on('message', message =>                                                 
 	else if(message.content.startsWith(`${prefix}troll`))
 	{
 		let user = message.mentions.members.first();
-		message.channel.send(```Silly Ningen! + ${user}```);
+		message.channel.send("```\n Silly Ningen!" + user +"\n```");
 	}
-	
+
 	else if(message.content.startsWith(`${prefix}welcome`))                // test welcome message
 	{
 		let user = message.mentions.members.first();
@@ -68,7 +68,7 @@ client.on('message', message =>                                                 
 		}
 		else
 		{
-			message.channel.send(`Found ${sysChannel}`);
+			message.channel.send("\n```Found" +sysChannel+"\n```");
 		}
 	
 		const serverName = message.guild.name;
@@ -79,11 +79,11 @@ client.on('message', message =>                                                 
 		if(!welcome || !intro) return;                                               // do nothing if they arent 
 		if(!roles) 
 		{	
-			sysChannel.send(```Welcome to ${serverName} ${user} ! \n Please read ${welcome} and leave an intro in ${intro}```);                 // return welcome messgae to member log channel
+			sysChannel.send("```\n Welcome to" +serverName+ +user+ "!" + "\n Please read:" +welcome+"\n leave an intro in:" +intro+"\n```");                 // return welcome messgae to member log channel
 		}
 		else
 		{
-			sysChannel.send("```Welcome to ${serverName} ${user} ! \n Please read ${welcome} and leave an intro in ${intro} ! \n Get your Role from ${roles} ! ```");                 // return welcome messgae to member log channel
+			sysChannel.send("```\n Welcome to" +serverName+ +user+ "!" + "\n Please read:" +welcome+"\n leave an intro in:" +intro+"!"+"\n Get your Role from:"+roles+"!"+"\n```");                 // return welcome messgae to member log channel
 		}
 	}
 
@@ -94,7 +94,7 @@ client.on('message', message =>                                                 
 		({
 			name: newRole
 		})
-		.then(role => message.channel.send("```Created new role with name ${role.name}```"))
+		.then(role => message.channel.send("```\n Created new role with name:" +role.name+ "\n```"))
 	}
 });
 
