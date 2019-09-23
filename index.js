@@ -40,13 +40,13 @@ client.on('message', message =>                                                 
 	}
 	else if(message.content.startsWith(`${prefix}hello`))
 	{
-		message.channel.send("Greetings Ningen!");                          
+		message.channel.send(" ```Greetings Ningen!``` ");                          
 	}
 
 	else if(message.content.startsWith(`${prefix}troll`))
 	{
 		let user = message.mentions.members.first();
-		message.channel.send(`Silly Ningen! ${user}`);
+		message.channel.send(```Silly Ningen! + ${user}```);
 	}
 	
 	else if(message.content.startsWith(`${prefix}welcome`))                // test welcome message
@@ -63,12 +63,12 @@ client.on('message', message =>                                                 
 
 		if (!sysChannel)
 		{ 
-			message.channel.send(```general Not Found```);
+			message.channel.send(" ```general Not Found``` ");
 			return;                                                       // do nothing if not found
 		}
 		else
 		{
-			message.channel.send(`Found ${sysChannel}`);
+			message.channel.send(```Found ${sysChannel} ```);
 		}
 	
 		const serverName = message.guild.name;
@@ -79,11 +79,11 @@ client.on('message', message =>                                                 
 		if(!welcome || !intro) return;                                               // do nothing if they arent 
 		if(!roles) 
 		{	
-			sysChannel.send(```Welcome to ${serverName} ${user} ! \n Please read ${welcome} and leave an intro in ${intro} ```);                 // return welcome messgae to member log channel
+			sysChannel.send(```Welcome to ${serverName} ${user} ! \n Please read ${welcome} and leave an intro in ${intro}```);                 // return welcome messgae to member log channel
 		}
 		else
 		{
-			sysChannel.send(```Welcome to ${serverName} ${user} ! \n Please read ${welcome} and leave an intro in ${intro} ! \n Get your Role from ${roles} ! ```);                 // return welcome messgae to member log channel
+			sysChannel.send("```Welcome to ${serverName} ${user} ! \n Please read ${welcome} and leave an intro in ${intro} ! \n Get your Role from ${roles} ! ```");                 // return welcome messgae to member log channel
 		}
 	}
 
@@ -94,7 +94,7 @@ client.on('message', message =>                                                 
 		({
 			name: newRole
 		})
-		.then(role => message.channel.send(```Created new role with name ${role.name}```))
+		.then(role => message.channel.send("```Created new role with name ${role.name}```"))
 	}
 });
 
