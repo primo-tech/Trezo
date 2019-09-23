@@ -74,11 +74,11 @@ client.on('message', message =>                                                 
 		if(!welcome || !intro) return;                                               // do nothing if they arent 
 		if(!roles) 
 		{	
-			sysChannel.send(`\`\`\`\n Welcome to ${serverName}, ${user} "!" \n Please read:  ${welcome} \n leave an intro in:  ${intro} \n\`\`\``);                 // return welcome messgae to member log channel
+			sysChannel.send(`  \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in:  ${intro} \n  `);                 // return welcome messgae to member log channel
 		}
 		else
 		{
-			sysChannel.send(`\`\`\`\n Welcome to ${serverName}, ${user} "!" \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n\`\`\``);                 // return welcome messgae to member log channel
+			sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
 		}
 	}
 
