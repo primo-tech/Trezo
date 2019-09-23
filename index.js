@@ -68,17 +68,26 @@ client.on('message', message =>                                                 
 		const intro  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
 		const roles = message.guild.channels.find(ch => ch.name === 'roles');
 
-		sysChannel.send(`Welcome to ${serverName} ${user} !`);
-		
-		if(!welcome || !intro) return;                                               // do nothing if they arent found
+		if(!welcome || !intro) return;                                               // do nothing if they arent 
+		if(!roles) 
+		{	
+			sysChannel.send(```Welcome to ${serverName} ${user} ! \n Please read ${welcome} and leave an intro in ${intro} ```);                 // return welcome messgae to member log channel
+		}
+		else
+		{
+			sysChannel.send(```Welcome to ${serverName} ${user} ! \n Please read ${welcome} and leave an intro in ${intro} ! \n Get your Role from ${roles} ! ```);                 // return welcome messgae to member log channel
+		}
+	}
 
-		sysChannel.send(`Please read ${welcome} and leave an intro in ${intro} !`);
-	
-		if(!roles) return;
-
-		sysChannel.send(`Get your Role from ${roles} !`);                  // return welcome messgae to member log channel
+	else if(message.content.startsWith(`${prefix}addrole`))
+	{
+		const newRole = message.content.substring(8);
+		guild.createRole
+		({
+			name: newRole
+		})
+		.then(role => message.channel.send(```Created new role with name ${role.name}```))
 	}
 });
 
 client.login(process.env.BOT_TOKEN);                                      //  invoke bot token from Heroku variables
-
