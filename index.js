@@ -3,7 +3,6 @@ const client = new Discord.Client();
 
 const prefix = "-";
 
-
 client.once('ready', () =>
 {
 	console.log('Ready!')
@@ -42,13 +41,11 @@ client.on('message', message =>                                                 
 	{
 		message.channel.send(" ```Greetings Ningen!``` ");                          
 	}
-
 	else if(message.content.startsWith(`${prefix}troll`))
 	{
 		let user = message.mentions.members.first();
 		message.channel.send("```\n Silly Ningen! " +user.displayName+"\n```");
 	}
-
 	else if(message.content.startsWith(`${prefix}welcome`))                // test welcome message
 	{
 		let user = message.mentions.members.first();
@@ -80,8 +77,23 @@ client.on('message', message =>                                                 
 		{
 			sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
 		}
+		const exampleEmbed = new Discord.RichEmbed()
+		.setColor('#0099ff')
+		.setTitle('Some title')
+		.setURL('https://discord.js.org/')
+		.setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
+		.setDescription('Some description here')
+		.setThumbnail('https://i.imgur.com/wSTFkRM.png')
+		.addField('Regular field title', 'Some value here')
+		.addBlankField()
+		.addField('Inline field title', 'Some value here', true)
+		.addField('Inline field title', 'Some value here', true)
+		.addField('Inline field title', 'Some value here', true)
+		.setImage('https://i.imgur.com/wSTFkRM.png')
+		.setTimestamp()
+		.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
+		sysChannel.send(exampleEmbed);
 	}
-
 	else if(message.content.startsWith(`${prefix}addrole`))
 	{
 		const newRole = message.content.substring(8);
