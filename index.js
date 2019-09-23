@@ -61,7 +61,11 @@ client.on('message', message =>                                                 
 		
 		const sysChannel = message.guild.channels.find(ch => ch.name === 'general'); // find the member log channel
 
-		if (!sysChannel) return;                                                       // do nothing if not found
+		if (!sysChannel)
+		{ 
+			message.channel.send(```general Not Found```);
+			return;                                                       // do nothing if not found
+		}
 		else
 		{
 			message.channel.send(`Found ${sysChannel}`);
