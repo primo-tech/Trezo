@@ -46,7 +46,7 @@ client.on('message', message =>                                                 
 	else if(message.content.startsWith(`${prefix}troll`))
 	{
 		let user = message.mentions.members.first();
-		message.channel.send("```\n Silly Ningen!" + user.name +"\n```");
+		message.channel.send("```\n Silly Ningen!" + user.displayName +"\n```");
 	}
 
 	else if(message.content.startsWith(`${prefix}welcome`))                // test welcome message
