@@ -63,12 +63,7 @@ client.on('message', message =>                                                 
 
 		if (!sysChannel)
 		{ 
-			message.channel.send(" ```general Not Found``` ");
 			return;                                                       // do nothing if not found
-		}
-		else
-		{
-			message.channel.send("\n```Found " +sysChannel+"\n```");
 		}
 	
 		const serverName = message.guild.name;
@@ -79,18 +74,18 @@ client.on('message', message =>                                                 
 		if(!welcome || !intro) return;                                               // do nothing if they arent 
 		if(!roles) 
 		{	
-			sysChannel.send("```\n Welcome to " +serverName+ " " +user.displayName+ "!" + "\n Please read: " +welcome+ "\n leave an intro in: " +intro+ "\n```");                 // return welcome messgae to member log channel
+			sysChannel.send("```\n Welcome to " +serverName.displayName+ " " +user.displayName+ "!" + "\n Please read: " +welcome.displayName+ "\n leave an intro in: " +intro.displayName+ "\n```");                 // return welcome messgae to member log channel
 		}
 		else
 		{
-			sysChannel.send("```\n Welcome to " +serverName+ " " +user.displayName+ "!" + "\n Please read: " +welcome+ "\n leave an intro in: " +intro+ "!" + "\n Get your Role from: " +roles+ "!"+"\n```");                 // return welcome messgae to member log channel
+			sysChannel.send("```\n Welcome to " +serverName.displayName+ " " +user.displayName+ "!" + "\n Please read: " +welcome.displayName+ "\n leave an intro in: " +intro.displayName+ "!" + "\n Get your Role from: " +roles.displayName+ "!"+"\n```");                 // return welcome messgae to member log channel
 		}
 	}
 
 	else if(message.content.startsWith(`${prefix}addrole`))
 	{
 		const newRole = message.content.substring(8);
-		guild.createRole
+		message.guild.createRole
 		({
 			name: newRole
 		})
