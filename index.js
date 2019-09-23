@@ -68,15 +68,7 @@ client.on('message', message =>                                                 
 		const intro  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
 		const roles = message.guild.channels.find(ch => ch.name === 'roles');
 
-		if(!welcome || !intro) return;                                               // do nothing if they arent 
-		if(!roles) 
-		{	
-			sysChannel.send(`  \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in:  ${intro} \n  `);                 // return welcome messgae to member log channel
-		}
-		else
-		{
-			sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
-			const exampleEmbed = new Discord.RichEmbed()
+		const exampleEmbed = new Discord.RichEmbed()
 				.setColor('#0099ff')
 				.setTitle('Some title')
 				.setURL('https://discord.js.org/')
@@ -91,6 +83,15 @@ client.on('message', message =>                                                 
 				.setImage('https://i.imgur.com/wSTFkRM.png')
 				.setTimestamp()
 				.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
+
+		if(!welcome || !intro) return;                                               // do nothing if they arent 
+		if(!roles) 
+		{	
+			sysChannel.send(`  \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in:  ${intro} \n  `);                 // return welcome messgae to member log channel
+		}
+		else
+		{
+			sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
 			sysChannel.send(exampleEmbed);
 		}
 	}
