@@ -17,16 +17,50 @@ client.on('guildMemberAdd', member =>                                           
 	const welcome = message.guild.channels.find(ch => ch.name === 'welcome');
     const intro  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
     const roles = message.guild.channels.find(ch => ch.name === 'roles');
-
-    sysChannel.send(`Welcome to ${serverName} ${member.user.username} !`);
 	
-	if(!welcome || !intro) return;                                               // do nothing if they arent found
+	if(!welcome || !intro || !roles) return;                                               // do nothing if they arent 
+		else
+		{
+			//sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
+			
+			var dt = new Date();
+			const year = dt.getFullYear();
 
-    sysChannel.send(`Please read ${welcome} and leave an intro in ${intro} !`);
-	
-	if(!roles) return;
-
-    sysChannel.send(`Get your Role from ${roles} !`);                  // return welcome messgae to member log channel
+			const exampleEmbed = {
+				color: 0x0099ff,
+				title: ` Welcome ${member.displayName}, To The ${serverName} Discord Server`,
+				author: 
+				{
+					name: `${serverName}`,
+					icon_url: 'https://avatars3.githubusercontent.com/u/52018753?s=200&v=4',
+					url: 'https://primotechorg.wordpress.com/',
+				},
+				description: 'Primo Tech is an Open Source technology initiative which seeks to develop solutions and build communities of solvers',
+				fields: 
+				[
+					{
+						name: 'Please read the Welcome Channel',
+						value: `${welcome}`,
+					},
+					{
+						name: 'leave an intro in the Introduction Channel',
+						value: `${intro}`,
+					},
+					{
+						name: 'Get your role from the Roles Channel',
+						value: `${roles}`,
+					},
+				],
+				timestamp: new Date(),
+				footer: 
+				{
+					text: `Trademark ${year}`,
+					icon_url: 'https://avatars3.githubusercontent.com/u/52018753?s=200&v=4',
+				},
+			};
+			
+			sysChannel.send({ embed: exampleEmbed });
+		}
 });
 
 client.on('message', message =>                                                 // on messgae recieved......
@@ -43,6 +77,11 @@ client.on('message', message =>                                                 
 	else if(message.content.startsWith(`${prefix}troll`))
 	{
 		let user = message.mentions.members.first();
+		const noUser = " ";
+		if (!user)
+		{
+			user = noUser;
+		}
 		message.channel.send("```\n Silly Ningen! " +user.displayName+"\n```");
 	}
 	else if(message.content.startsWith(`${prefix}welcome`))                // test welcome message
@@ -67,14 +106,11 @@ client.on('message', message =>                                                 
 		const intro  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
 		const roles = message.guild.channels.find(ch => ch.name === 'roles');
 
-		if(!welcome || !intro) return;                                               // do nothing if they arent 
-		if(!roles) 
-		{	
-			//sysChannel.send(`  \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in:  ${intro} \n  `);                 // return welcome messgae to member log channel
-		}
+		if(!welcome || !intro || !roles) return;                                               // do nothing if they arent 
 		else
 		{
 			//sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
+			
 			var dt = new Date();
 			const year = dt.getFullYear();
 
@@ -84,7 +120,7 @@ client.on('message', message =>                                                 
 				author: 
 				{
 					name: `${serverName}`,
-					//icon_url: 'https://i.imgur.com/wSTFkRM.png',
+					icon_url: 'https://avatars3.githubusercontent.com/u/52018753?s=200&v=4',
 					url: 'https://primotechorg.wordpress.com/',
 				},
 				description: 'Primo Tech is an Open Source technology initiative which seeks to develop solutions and build communities of solvers',
@@ -107,7 +143,7 @@ client.on('message', message =>                                                 
 				footer: 
 				{
 					text: `Trademark ${year}`,
-					icon_url: 'https://i.imgur.com/wSTFkRM.png',
+					icon_url: 'https://avatars3.githubusercontent.com/u/52018753?s=200&v=4',
 				},
 			};
 			
