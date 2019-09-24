@@ -77,12 +77,14 @@ client.on('message', message =>                                                 
 	else if(message.content.startsWith(`${prefix}troll`))
 	{
 		let user = message.mentions.members.first();
-		const noUser = " ";
 		if (!user)
 		{
-			user = noUser;
+			message.channel.send("```\n Silly Ningen! \n```");
 		}
-		message.channel.send("```\n Silly Ningen! " +user.displayName+"\n```");
+		else
+		{
+			message.channel.send("```\n Silly Ningen! " +user.displayName+"\n```");
+		}
 	}
 	else if(message.content.startsWith(`${prefix}welcome`))                // test welcome message
 	{
@@ -146,7 +148,6 @@ client.on('message', message =>                                                 
 					icon_url: 'https://avatars3.githubusercontent.com/u/52018753?s=200&v=4',
 				},
 			};
-			
 			sysChannel.send({ embed: exampleEmbed });
 		}
 	}
@@ -157,7 +158,7 @@ client.on('message', message =>                                                 
 		({
 			name: newRole
 		})
-		.then(role => message.channel.send("```\n Created new role with name: " +role.name+ "\n```"))
+		.then(role => message.channel.send("```\n Created new role with name: " +role.name+ "\n```"));
 	}
 });
 
