@@ -75,48 +75,38 @@ client.on('message', message =>                                                 
 		else
 		{
 			//sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
+			var dt = new Date();
+			const year = dt.getFullYear();
+
 			const exampleEmbed = {
 				color: 0x0099ff,
 				title: ` Welcome ${user.displayName}, To The ${serverName} Discord Server`,
-				url: 'https://primotechorg.wordpress.com/',
-				author: {
-					name: 'Some name',
-					icon_url: 'https://i.imgur.com/wSTFkRM.png',
-					url: 'https://discord.js.org',
+				author: 
+				{
+					name: `${serverName}`,
+					//icon_url: 'https://i.imgur.com/wSTFkRM.png',
+					url: 'https://primotechorg.wordpress.com/',
 				},
-				description: 'Some description here',
-				thumbnail: {
-					url: 'https://i.imgur.com/wSTFkRM.png',
-				},
-				fields: [
+				description: 'Primo Tech is an Open Source technology initiative which seeks to develop solutions and build communities of solvers',
+				fields: 
+				[
 					{
-						name: 'Welcome Channel',
+						name: 'Please read the Welcome Channel',
 						value: `${welcome}`,
 					},
 					{
-						name: 'Introduction Channel',
+						name: 'leave an intro in the Introduction Channel',
 						value: `${intro}`,
 					},
 					{
-						name: 'Roles Channel',
+						name: 'Get your role from the Roles Channel',
 						value: `${roles}`,
 					},
-					{
-						name: '\u200b',
-						value: '\u200b',
-					},
-					{
-						name: 'Inline field title',
-						value: 'Some value here',
-						inline: true,
-					},
 				],
-				image: {
-					url: 'https://i.imgur.com/wSTFkRM.png',
-				},
 				timestamp: new Date(),
-				footer: {
-					text: 'Some footer text here',
+				footer: 
+				{
+					text: `Trademark ${year}`,
 					icon_url: 'https://i.imgur.com/wSTFkRM.png',
 				},
 			};
