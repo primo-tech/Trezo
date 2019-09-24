@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const exampleEmbed = new Discord.RichEmbed();
 
 const prefix = "-";
 
@@ -68,21 +69,11 @@ client.on('message', message =>                                                 
 		const intro  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
 		const roles = message.guild.channels.find(ch => ch.name === 'roles');
 
-		const exampleEmbed = new message.MessageEmbed()
-				.setColor('#0099ff')
-				.setTitle('Some title')
-				.setURL('https://discord.js.org/')
-				.setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
-				.setDescription('Some description here')
-				.setThumbnail('https://i.imgur.com/wSTFkRM.png')
-				.addField('Regular field title', 'Some value here')
-				.addBlankField()
-				.addField('Inline field title', 'Some value here', true)
-				.addField('Inline field title', 'Some value here', true)
-				.addField('Inline field title', 'Some value here', true)
-				.setImage('https://i.imgur.com/wSTFkRM.png')
-				.setTimestamp()
-				.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
+		exampleEmbed.setColor('#0099ff');
+		exampleEmbed.setTitle('Some title');
+		exampleEmbed.setURL('https://discord.js.org/');
+		exampleEmbed.setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org');
+		exampleEmbed.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
 
 		if(!welcome || !intro) return;                                               // do nothing if they arent 
 		if(!roles) 
