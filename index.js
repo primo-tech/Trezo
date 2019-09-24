@@ -83,8 +83,14 @@ client.on('message', message =>                                                 
 		else
 		{
 			//sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
-			message.channel.send(exampleEmbed);
-			sysChannel.send(exampleEmbed);
+			message.channel.send({embed: {
+				color: 3447003,
+				description: "A very simple Embed!"
+			  }});
+			sysChannel.send({embed: {
+				color: 3447003,
+				description: "A very simple Embed!"
+			}});
 		}
 	}
 	else if(message.content.startsWith(`${prefix}addrole`))
