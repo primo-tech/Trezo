@@ -93,6 +93,7 @@ client.on('message', message =>                                                 
 		{
 			//sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
 			message.channel.send(exampleEmbed);
+			sysChannel.send(exampleEmbed);
 		}
 	}
 	else if(message.content.startsWith(`${prefix}addrole`))
