@@ -68,7 +68,7 @@ client.on('message', message =>                                                 
 		const intro  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
 		const roles = message.guild.channels.find(ch => ch.name === 'roles');
 
-		const exampleEmbed = new Discord.RichEmbed()
+		const exampleEmbed = new Discord.MessageEmbed()
 				.setColor('#0099ff')
 				.setTitle('Some title')
 				.setURL('https://discord.js.org/')
