@@ -187,7 +187,9 @@ client.on('message', message =>                                                 
 				icon_url: 'https://avatars3.githubusercontent.com/u/52018753?s=200&v=4',
 			},
 		};
-
+		message.channel.send(`${Roles}`);
+		message.channel.send({ embed: rolesEmbed });
+		
 		const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
 
 		if(!rolesChannel)
