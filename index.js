@@ -158,13 +158,13 @@ client.on('message', message =>                                                 
 		var botRoles;
 		var i,j = 0;
 		var Roles = rolesRaw.filter(r => r != '@everyone');
-
-		for(i=0;i<Bots.length;i++)
+		message.channel.send(`${Roles.filter(rr => r != Bots)}`);
+		/*for(i=0;i<Bots.length;i++)
 		{
 			message.channel.send(`${Bots[i]}`);
 			botRoles[i] = Bots[i].roles;
 		}
-		message.channel.send(`${botRoles}`);
+		message.channel.send(`${botRoles}`);*/
 	}
 	else if(message.content.startsWith(`${prefix}addrole`))
 	{
