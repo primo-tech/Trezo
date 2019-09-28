@@ -172,11 +172,8 @@ client.on('message', message =>                                                 
 			fields: 
 			[
 				{
-					name: 'Please Choose a Role',
-					value: `${Roles}`,
-				},
-				{
 					name: 'Command: -addrole @name-of-role',
+					value: `${Roles}`,
 				},
 			],
 			timestamp: new Date(),
@@ -187,18 +184,18 @@ client.on('message', message =>                                                 
 			},
 		};
 
-		//const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
+		const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
 
-		//if(!rolesChannel)
-		//{
-			message.channel.send(`${Roles}`);
+		if(!rolesChannel)
+		{
+			//message.channel.send(`${Roles}`);
 			message.channel.send({ embed: rolesEmbed });
-		//}
-		//else
-		//{
-			//rolesChannel.send({ embed: rolesEmbed });
-			//rolesChannel.send(`${message.member}`);
-		//}
+		}
+		else
+		{
+			rolesChannel.send({ embed: rolesEmbed });
+			rolesChannel.send(`${message.member}`);
+		}
 	}
 	/*else if(message.content.startsWith(`${prefix}addrole`))
 	{
