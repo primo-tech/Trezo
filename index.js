@@ -187,7 +187,7 @@ client.on('message', message =>                                                 
 			},
 		};
 
-		const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
+		//const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
 
 		//if(!rolesChannel)
 		//{
@@ -195,8 +195,8 @@ client.on('message', message =>                                                 
 		//}
 		//else
 		//{
-			rolesChannel.send({ embed: rolesEmbed });
-			rolesChannel.send(`${message.member}`);
+			//rolesChannel.send({ embed: rolesEmbed });
+			//rolesChannel.send(`${message.member}`);
 		//}
 	}
 	/*else if(message.content.startsWith(`${prefix}addrole`))
