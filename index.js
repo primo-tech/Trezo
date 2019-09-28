@@ -160,11 +160,11 @@ client.on('message', message =>                                                 
 		{
 			if (rolesRaw.name[i] != "everyone")
 			{
-				Roles[j] = role.Raw[i];
+				Roles[j] = roleRaw[i];
 				j++;
 			}
 		}
-		message.channel.send(`${Roles.name}`);
+		message.channel.send(`${Roles}`);
 	}
 	else if(message.content.startsWith(`${prefix}addrole`))
 	{
