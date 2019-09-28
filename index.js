@@ -152,7 +152,6 @@ client.on('message', message =>                                                 
 	else if(message.content.startsWith(`${prefix}roles`))
 	{
 		const serverName = message.guild.name;
-		const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
 
 		var rolesRaw = message.guild.roles.array();
 		//const Bots =  message.guild.members.filter(member => member.user.bot).array();
@@ -187,6 +186,8 @@ client.on('message', message =>                                                 
 				icon_url: 'https://avatars3.githubusercontent.com/u/52018753?s=200&v=4',
 			},
 		};
+		
+		const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
 
 		if(!rolesChannel)
 		{
@@ -197,7 +198,6 @@ client.on('message', message =>                                                 
 			rolesChannel.send({ embed: rolesEmbed });
 			rolesChannel.send(`${message.member}`);
 		}
-		
 	}
 	/*else if(message.content.startsWith(`${prefix}addrole`))
 	{
