@@ -161,6 +161,7 @@ client.on('message', message =>                                                 
 
 		for(i=0;i<Bots.length;i++)
 		{
+			message.channel.send(`${Bots[i]}`);
 			botRoles[i] = Bots[i].roles;
 		}
 		message.channel.send(`${botRoles}`);
