@@ -2,6 +2,9 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "-";
 
+var dt = new Date();
+const year = dt.getFullYear();
+
 client.once('ready', () =>
 {
 	console.log('Ready!')
@@ -22,10 +25,7 @@ client.on('guildMemberAdd', member =>                                           
 		else
 		{
 			//sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
-			
-			var dt = new Date();
-			const year = dt.getFullYear();
-
+		
 			const WelcomeEmbed = {
 				color: 0x0099ff,
 				title: ` Welcome ${member.displayName}, To The ${serverName} Discord Server`,
@@ -112,9 +112,6 @@ client.on('message', message =>                                                 
 		else
 		{
 			//sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
-			
-			var dt = new Date();
-			const year = dt.getFullYear();
 
 			const WelcomeEmbed = {
 				color: 0x0099ff,
@@ -154,17 +151,34 @@ client.on('message', message =>                                                 
 	else if(message.content.startsWith(`${prefix}roles`))
 	{
 		var rolesRaw = message.guild.roles.array();
-		const Bots =  message.guild.members.filter(member => member.user.bot).array();
-		var botRoles;
-		var i,j = 0;
+		//const Bots =  message.guild.members.filter(member => member.user.bot).array();
 		var Roles = rolesRaw.filter(r => r != '@everyone');
-		message.channel.send(`${Roles.filter(rr => rr != Bots)}`);
-		/*for(i=0;i<Bots.length;i++)
-		{
-			message.channel.send(`${Bots[i]}`);
-			botRoles[i] = Bots[i].roles;
-		}
-		message.channel.send(`${botRoles}`);*/
+		//message.channel.send(`${Roles}`);
+		const rolesEmbed = {
+			color: 0x0099ff,
+			title: 'Roles Available',
+			author: 
+			{
+				name: `${serverName}`,
+				icon_url: 'https://avatars3.githubusercontent.com/u/52018753?s=200&v=4',
+				url: 'https://primotechorg.wordpress.com/',
+			},
+			description: 'Please select an available role from below \n -addrole @nameofrole',
+			fields: 
+			[
+				{
+					name: 'Please read the Welcome Channel',
+					value: `${Roles}`,
+				},
+			],
+			timestamp: new Date(),
+			footer: 
+			{
+				text: `Trademark ${year}`,
+				icon_url: 'https://avatars3.githubusercontent.com/u/52018753?s=200&v=4',
+			},
+		};
+		message.channel.send({ embed: RolesEmbed });
 	}
 	else if(message.content.startsWith(`${prefix}addrole`))
 	{
