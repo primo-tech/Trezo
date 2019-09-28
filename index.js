@@ -153,8 +153,18 @@ client.on('message', message =>                                                 
 	}
 	else if(message.content.startsWith(`${prefix}roles`))
 	{
-		var Roles = message.guild.roles.array();
-		message.channel.send(`${Roles}`);
+		var rolesRaw = message.guild.roles.array();
+		var i,j = 0;
+		var Roles;
+		for(i=0;i<rolesRaw.length;i++)
+		{
+			if (rolesRaw.name[i] != "everyone")
+			{
+				Roles[j] = role.Raw[i];
+				j++;
+			}
+		}
+		message.channel.send(`${Roles.name}`);
 	}
 	else if(message.content.startsWith(`${prefix}addrole`))
 	{
