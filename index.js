@@ -172,8 +172,12 @@ client.on('message', message =>                                                 
 			fields: 
 			[
 				{
-					name: 'Command: -addrole @name-of-role',
+					name: 'Roles Available:',
 					value: `${Roles}`,
+				},
+				{
+					name: 'Command:',
+					value: '-addrole @name-of-role',
 				},
 			],
 			timestamp: new Date(),
@@ -188,11 +192,12 @@ client.on('message', message =>                                                 
 
 		if(!rolesChannel)
 		{
-			//message.channel.send(`${Roles}`);
+			message.channel.send(`${Roles}`);
 			message.channel.send({ embed: rolesEmbed });
 		}
 		else
 		{
+			rolesChannel.channel.send(`${Roles}`);
 			rolesChannel.send({ embed: rolesEmbed });
 			rolesChannel.send(`${message.member}`);
 		}
