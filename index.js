@@ -152,7 +152,7 @@ client.on('message', message =>                                                 
 	else if(message.content.startsWith(`${prefix}roles`))
 	{
 		const serverName = message.guild.name;
-		//const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
+		const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
 
 		var rolesRaw = message.guild.roles.array();
 		var Roles = rolesRaw.filter(r => r != '@everyone');
@@ -194,17 +194,12 @@ client.on('message', message =>                                                 
 		message.channel.send({ embed: rolesEmbed });
 		message.channel.send(`${message.member}`);
 
-		/*if(!rolesChannel)
-		{
-			message.channel.send(`${Roles}`);
-			message.channel.send({ embed: rolesEmbed });
-		}
-		else
+		if(rolesChannel)
 		{
 			rolesChannel.channel.send(`${Roles}`);
 			rolesChannel.send({ embed: rolesEmbed });
 			rolesChannel.send(`${message.member}`);
-		}*/
+		}
 	}
 	/*else if(message.content.startsWith(`${prefix}addrole`))
 	{
