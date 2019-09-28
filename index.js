@@ -14,11 +14,11 @@ client.on('guildMemberAdd', member =>                                           
 	if (!sysChannel) return;                                                       // do nothing if not found
 	
 	const serverName = message.guild.name;
-	const welcome = message.guild.channels.find(ch => ch.name === 'welcome');
-    const intro  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
-    const roles = message.guild.channels.find(ch => ch.name === 'roles');
+	const welcomeChannel = message.guild.channels.find(ch => ch.name === 'welcome');
+    const introChannel  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
+    const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
 	
-	if(!welcome || !intro || !roles) return;                                               // do nothing if they arent 
+	if(!welcomeChannel || !introChannel || !rolesChannel) return;                                               // do nothing if they arent 
 		else
 		{
 			//sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
@@ -39,15 +39,15 @@ client.on('guildMemberAdd', member =>                                           
 				[
 					{
 						name: 'Please read the Welcome Channel',
-						value: `${welcome}`,
+						value: `${welcomeChannel}`,
 					},
 					{
 						name: 'leave an intro in the Introduction Channel',
-						value: `${intro}`,
+						value: `${introChannel}`,
 					},
 					{
 						name: 'Get your role from the Roles Channel',
-						value: `${roles}`,
+						value: `${rolesChannel}`,
 					},
 				],
 				timestamp: new Date(),
@@ -103,11 +103,11 @@ client.on('message', message =>                                                 
 		}
 	
 		const serverName = message.guild.name;
-		const welcome = message.guild.channels.find(ch => ch.name === 'welcome');
-		const intro  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
-		const roles = message.guild.channels.find(ch => ch.name === 'roles');
+		const welcomeChannel = message.guild.channels.find(ch => ch.name === 'welcome');
+		const introChannel  = message.guild.channels.find(ch => ch.name === 'introduction'); // find the intro, roles and welcome chanlles
+		const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
 
-		if(!welcome || !intro || !roles) return;                                               // do nothing if they arent 
+		if(!welcomeChannel || !introChannel || !rolesChannel) return;                                               // do nothing if they arent 
 		else
 		{
 			//sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
@@ -128,15 +128,15 @@ client.on('message', message =>                                                 
 				[
 					{
 						name: 'Please read the Welcome Channel',
-						value: `${welcome}`,
+						value: `${welcomeChannel}`,
 					},
 					{
 						name: 'leave an intro in the Introduction Channel',
-						value: `${intro}`,
+						value: `${introChannel}`,
 					},
 					{
 						name: 'Get your role from the Roles Channel',
-						value: `${roles}`,
+						value: `${rolesChannel}`,
 					},
 				],
 				timestamp: new Date(),
@@ -152,12 +152,11 @@ client.on('message', message =>                                                 
 	else if(message.content.startsWith(`${prefix}roles`))
 	{
 		const serverName = message.guild.name;
+		const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
 
 		var rolesRaw = message.guild.roles.array();
 		//const Bots =  message.guild.members.filter(member => member.user.bot).array();
 		var Roles = rolesRaw.filter(r => r != '@everyone');
-		message.channel.send(`${Roles}`);
-
 		var dt = new Date();
 		const year = dt.getFullYear();
 
@@ -170,12 +169,15 @@ client.on('message', message =>                                                 
 				icon_url: 'https://avatars3.githubusercontent.com/u/52018753?s=200&v=4',
 				url: 'https://primotechorg.wordpress.com/',
 			},
-			description: 'Please select an available role from below \n -addrole @nameofrole',
+			description: 'Please select an available role from below',
 			fields: 
 			[
 				{
 					name: 'Please Choose a Role',
 					value: `${Roles}`,
+				},
+				{
+					name: 'Command: -addrole @name-of-role',
 				},
 			],
 			timestamp: new Date(),
@@ -185,7 +187,17 @@ client.on('message', message =>                                                 
 				icon_url: 'https://avatars3.githubusercontent.com/u/52018753?s=200&v=4',
 			},
 		};
-		message.channel.send({ embed: rolesEmbed });
+
+		if(!rolesChannel)
+		{
+			message.channel.send({ embed: rolesEmbed });
+		}
+		else
+		{
+			rolesChannel.send({ embed: rolesEmbed });
+			rolesChannel.send(`${message.member}`);
+		}
+		
 	}
 	/*else if(message.content.startsWith(`${prefix}addrole`))
 	{
