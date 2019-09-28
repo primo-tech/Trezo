@@ -160,7 +160,7 @@ client.on('message', message =>                                                 
 		{
 			if (rolesRaw.name[i] != "everyone")
 			{
-				Roles[j] = roleRaw[i];
+				Roles[j] = rolesRaw[i];
 				j++;
 			}
 		}
