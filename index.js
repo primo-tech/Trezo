@@ -158,7 +158,7 @@ client.on('message', message =>                                                 
 		var botRoles;
 		var i,j = 0;
 		var Roles = rolesRaw.filter(r => r != '@everyone');
-		message.channel.send(`${Roles.filter(rr => r != Bots)}`);
+		message.channel.send(`${Roles.filter(rr => rr != Bots)}`);
 		/*for(i=0;i<Bots.length;i++)
 		{
 			message.channel.send(`${Bots[i]}`);
