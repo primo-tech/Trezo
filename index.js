@@ -155,19 +155,15 @@ client.on('message', message =>                                                 
 	{
 		var rolesRaw = message.guild.roles.array();
 		const Bots =  message.guild.members.filter(member => member.user.bot).array();
-		var botRoles = Bots;
+		var botRoles;
 		var i,j = 0;
 		var Roles = rolesRaw.filter(r => r != '@everyone');
-		message.channel.send(`${botRoles}`);
 
-		/*for(i=0;i<rolesRaw.length;i++)
+		for(i=0;i<Bots.length;i++)
 		{
-			if (rolesRaw.name[i] != "everyone")
-			{
-				Roles[j] = rolesRaw[i];
-				j++;
-			}
-		}*/
+			botRoles[i] = Bots[i].roles;
+		}
+		message.channel.send(`${botRoles}`);
 	}
 	else if(message.content.startsWith(`${prefix}addrole`))
 	{
