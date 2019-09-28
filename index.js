@@ -178,7 +178,7 @@ client.on('message', message =>                                                 
 				icon_url: 'https://avatars3.githubusercontent.com/u/52018753?s=200&v=4',
 			},
 		};
-		message.channel.send({ embed: RolesEmbed });
+		message.channel.send({ embed: rolesEmbed });
 	}
 	else if(message.content.startsWith(`${prefix}addrole`))
 	{
