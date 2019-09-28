@@ -2,9 +2,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "-";
 
-var dt = new Date();
-const year = dt.getFullYear();
-
 client.once('ready', () =>
 {
 	console.log('Ready!')
@@ -25,7 +22,9 @@ client.on('guildMemberAdd', member =>                                           
 		else
 		{
 			//sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
-		
+			var dt = new Date();
+			const year = dt.getFullYear();
+
 			const WelcomeEmbed = {
 				color: 0x0099ff,
 				title: ` Welcome ${member.displayName}, To The ${serverName} Discord Server`,
@@ -112,6 +111,8 @@ client.on('message', message =>                                                 
 		else
 		{
 			//sysChannel.send(` \n Welcome to ${serverName}, ${user.displayName} ! \n Please read:  ${welcome} \n leave an intro in: ${intro} \n Get your Role from: ${roles} \n  `);                 // return welcome messgae to member log channel
+			var dt = new Date();
+			const year = dt.getFullYear();
 
 			const WelcomeEmbed = {
 				color: 0x0099ff,
@@ -150,13 +151,19 @@ client.on('message', message =>                                                 
 	}
 	else if(message.content.startsWith(`${prefix}roles`))
 	{
+		const serverName = message.guild.name;
+
 		var rolesRaw = message.guild.roles.array();
 		//const Bots =  message.guild.members.filter(member => member.user.bot).array();
 		var Roles = rolesRaw.filter(r => r != '@everyone');
-		//message.channel.send(`${Roles}`);
+		message.channel.send(`${Roles}`);
+
+		var dt = new Date();
+		const year = dt.getFullYear();
+
 		const rolesEmbed = {
 			color: 0x0099ff,
-			title: 'Roles Available',
+			title: 'Roles',
 			author: 
 			{
 				name: `${serverName}`,
@@ -167,7 +174,7 @@ client.on('message', message =>                                                 
 			fields: 
 			[
 				{
-					name: 'Please read the Welcome Channel',
+					name: 'Please Choose a Role',
 					value: `${Roles}`,
 				},
 			],
@@ -180,7 +187,7 @@ client.on('message', message =>                                                 
 		};
 		message.channel.send({ embed: rolesEmbed });
 	}
-	else if(message.content.startsWith(`${prefix}addrole`))
+	/*else if(message.content.startsWith(`${prefix}addrole`))
 	{
 		const newRole = message.content.substring(8);
 		message.guild.createRole
@@ -188,7 +195,7 @@ client.on('message', message =>                                                 
 			name: newRole
 		})
 		.then(role => message.channel.send("```\n Created new role with name: " +role.name+ "\n```"));
-	}
+	}*/
 });
 
 client.login(process.env.BOT_TOKEN);                                      //  invoke bot token from Heroku variables
