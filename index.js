@@ -186,18 +186,18 @@ client.on('message', message =>                                                 
 				icon_url: 'https://avatars3.githubusercontent.com/u/52018753?s=200&v=4',
 			},
 		};
-		
+
 		const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
 
-		if(!rolesChannel)
-		{
+		//if(!rolesChannel)
+		//{
 			message.channel.send({ embed: rolesEmbed });
-		}
-		else
-		{
+		//}
+		//else
+		//{
 			rolesChannel.send({ embed: rolesEmbed });
 			rolesChannel.send(`${message.member}`);
-		}
+		//}
 	}
 	/*else if(message.content.startsWith(`${prefix}addrole`))
 	{
