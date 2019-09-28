@@ -155,9 +155,9 @@ client.on('message', message =>                                                 
 	{
 		var rolesRaw = message.guild.roles.array();
 		var i,j = 0;
-		var Roles = rolesRaw.filter(r => r == '@everyone');
+		var Roles = rolesRaw.filter(r => r != '@everyone');
 		message.channel.send("```\n" +Roles+ "\n```");
-		
+
 		/*for(i=0;i<rolesRaw.length;i++)
 		{
 			if (rolesRaw.name[i] != "everyone")
