@@ -155,7 +155,7 @@ client.on('message', message =>                                                 
 	{
 		var rolesRaw = message.guild.roles.array();
 		const Bots =  message.guild.members.filter(member => member.user.bot).array();
-		var botRoles = Bots.roles;
+		var botRoles = Bots;
 		var i,j = 0;
 		var Roles = rolesRaw.filter(r => r != '@everyone');
 		message.channel.send(`${botRoles}`);
