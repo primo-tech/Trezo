@@ -26,7 +26,7 @@ client.on('guildMemberAdd', member =>                                           
 			var dt = new Date();
 			const year = dt.getFullYear();
 
-			const exampleEmbed = {
+			const WelcomeEmbed = {
 				color: 0x0099ff,
 				title: ` Welcome ${member.displayName}, To The ${serverName} Discord Server`,
 				author: 
@@ -57,9 +57,9 @@ client.on('guildMemberAdd', member =>                                           
 					text: `Trademark ${year}`,
 					icon_url: 'https://avatars3.githubusercontent.com/u/52018753?s=200&v=4',
 				},
-			};
+			}
 			
-			sysChannel.send({ embed: exampleEmbed });
+			sysChannel.send({ embed: WelcomeEmbed });
 		}
 });
 
@@ -116,7 +116,7 @@ client.on('message', message =>                                                 
 			var dt = new Date();
 			const year = dt.getFullYear();
 
-			const exampleEmbed = {
+			const WelcomeEmbed = {
 				color: 0x0099ff,
 				title: ` Welcome ${user.displayName}, To The ${serverName} Discord Server`,
 				author: 
@@ -148,8 +148,13 @@ client.on('message', message =>                                                 
 					icon_url: 'https://avatars3.githubusercontent.com/u/52018753?s=200&v=4',
 				},
 			};
-			sysChannel.send({ embed: exampleEmbed });
+			sysChannel.send({ embed: WelcomeEmbed });
 		}
+	}
+	else if(message.content.startsWith(`${prefix}roles`))
+	{
+		var Roles = message.guild.roles.array();
+		message.channel.send(`${Roles}`);
 	}
 	else if(message.content.startsWith(`${prefix}addrole`))
 	{
