@@ -195,15 +195,11 @@ client.on('message', message =>                                                 
 		rolesChannel.send({ embed: rolesEmbed });
 		rolesChannel.send(`${message.member}`);
 	}
-	/*else if(message.content.startsWith(`${prefix}addrole`))
+	else if(message.content.startsWith(`${prefix}addrole`))
 	{
-		const newRole = message.content.substring(8);
-		message.guild.createRole
-		({
-			name: newRole
-		})
-		.then(role => message.channel.send("```\n Created new role with name: " +role.name+ "\n```"));
-	}*/
+		const newRoles = message.mentions.roles.array();
+		message.member.addRoles(newRoles);
+	}
 });
 
 client.login(process.env.BOT_TOKEN);                                      //  invoke bot token from Heroku variables
