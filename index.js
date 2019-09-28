@@ -155,16 +155,17 @@ client.on('message', message =>                                                 
 	{
 		var rolesRaw = message.guild.roles.array();
 		var i,j = 0;
-		var Roles;
-		for(i=0;i<rolesRaw.length;i++)
+		var Roles = rolesRaw.filter(r => r == '@everyone');
+		message.channel.send("```\n" +Roles+ "\n```");
+		
+		/*for(i=0;i<rolesRaw.length;i++)
 		{
 			if (rolesRaw.name[i] != "everyone")
 			{
 				Roles[j] = rolesRaw[i];
 				j++;
 			}
-		}
-		message.channel.send(`${Roles}`);
+		}*/
 	}
 	else if(message.content.startsWith(`${prefix}addrole`))
 	{
