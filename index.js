@@ -195,12 +195,12 @@ client.on('message', message =>                                                 
 		message.channel.send({ embed: rolesEmbed });
 		message.channel.send(`${message.member}`);
 
-		if(rolesChannel)
+		/*if(rolesChannel)
 		{
 			rolesChannel.channel.send(`${Roles}`);
 			rolesChannel.send({ embed: rolesEmbed });
 			rolesChannel.send(`${message.member}`);
-		}
+		}*/
 	}
 	/*else if(message.content.startsWith(`${prefix}addrole`))
 	{
