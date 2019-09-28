@@ -154,11 +154,11 @@ client.on('message', message =>                                                 
 	else if(message.content.startsWith(`${prefix}roles`))
 	{
 		var rolesRaw = message.guild.roles.array();
-		const Bots =  message.guild.members.filter(member => member.user.bot);
+		const Bots =  message.guild.members.filter(member => member.user.bot).array();
 		var botRoles = Bots.roles;
 		var i,j = 0;
 		var Roles = rolesRaw.filter(r => r != '@everyone');
-		message.channel.send(`${Roles.filter(rr => r != botRoles)}`);
+		message.channel.send(`${botRoles}`);
 
 		/*for(i=0;i<rolesRaw.length;i++)
 		{
