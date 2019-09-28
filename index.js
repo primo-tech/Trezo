@@ -152,10 +152,13 @@ client.on('message', message =>                                                 
 	else if(message.content.startsWith(`${prefix}roles`))
 	{
 		const serverName = message.guild.name;
+		//const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
 
 		var rolesRaw = message.guild.roles.array();
-		//const Bots =  message.guild.members.filter(member => member.user.bot).array();
 		var Roles = rolesRaw.filter(r => r != '@everyone');
+
+		//const Bots =  message.guild.members.filter(member => member.user.bot).array();
+		
 		var dt = new Date();
 		const year = dt.getFullYear();
 
@@ -189,10 +192,8 @@ client.on('message', message =>                                                 
 		};
 		message.channel.send(`${Roles}`);
 		message.channel.send({ embed: rolesEmbed });
-		
-		const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
 
-		if(!rolesChannel)
+		/*if(!rolesChannel)
 		{
 			message.channel.send(`${Roles}`);
 			message.channel.send({ embed: rolesEmbed });
@@ -202,7 +203,7 @@ client.on('message', message =>                                                 
 			rolesChannel.channel.send(`${Roles}`);
 			rolesChannel.send({ embed: rolesEmbed });
 			rolesChannel.send(`${message.member}`);
-		}
+		}*/
 	}
 	/*else if(message.content.startsWith(`${prefix}addrole`))
 	{
