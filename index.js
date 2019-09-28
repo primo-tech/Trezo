@@ -191,6 +191,7 @@ client.on('message', message =>                                                 
 
 		//if(!rolesChannel)
 		//{
+			message.channel.send(`${Roles}`);
 			message.channel.send({ embed: rolesEmbed });
 		//}
 		//else
