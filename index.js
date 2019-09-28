@@ -152,8 +152,9 @@ client.on('message', message =>                                                 
 	else if(message.content.startsWith(`${prefix}roles`))
 	{
 		const serverName = message.guild.name;
+		message.channel.send(`hello1`);
 		const rolesChannel = message.guild.channels.find(ch => ch.name === 'roles');
-
+		message.channel.send(`hell02`);
 		var rolesRaw = message.guild.roles.array();
 		var Roles = rolesRaw.filter(r => r != '@everyone');
 
